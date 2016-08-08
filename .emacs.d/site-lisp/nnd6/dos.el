@@ -1,0 +1,30 @@
+(defun check-8 ()
+    ""
+    (interactive)
+
+    (let ((dotp 0) (dotColumn 0) (bp 0) (nameEnd 0) (insp 0) )
+      (while (null (eobp))
+	(progn
+	  (end-of-line)
+	  (search-backward ".")
+	  (setq dotColumn (current-column))
+	  (setq dotp (point))
+	  (if (> dotColumn 8)
+	      (setq nameEnd (- dotp (- dotColumn 8)))
+	    (setq nameEnd dotp))
+	  ;;
+	  (beginning-of-line)
+	  (setq bp (point))
+	  (end-of-line)
+	  (insert-string "	")
+	  (setq insp (point))
+	  (insert-string (buffer-substring bp nameEnd))
+	  (insert-string (buffer-substring dotp (+ dotp 2)))
+	  (downcase-region insp (point))
+	  (if (> dotColumn 8)
+	      (progn
+		(insert-string "	")
+		(insert-string dotColumn)
+		)))
+	(forward-line 1)
+	)))
