@@ -86,10 +86,10 @@
 ;;
 ;;(set-language-environment "Japanese")
 ;;(set-terminal-coding-system 'utf-8-unix)
-;;(set-buffer-file-coding-system 'utf-8-unix)
-;;(setq default-buffer-file-coding-system 'utf-8-unix)
-;;(prefer-coding-system 'utf-8-unix)
-;;(set-default-coding-systems 'utf-8-unix)
+(set-buffer-file-coding-system 'utf-8-unix)
+(setq default-buffer-file-coding-system 'utf-8-unix)
+(prefer-coding-system 'utf-8-unix)
+(set-default-coding-systems 'utf-8-unix)
 (setq backup-by-copying-when-linked t)
 
 ;;(set-keyboard-coding-system 'sjis)
@@ -107,3 +107,9 @@
 ;;ファイルを開くときに大文字小文字の違いを無視
 ;;(setq read-buffer-completion-ignore-case t)    ;; バッファ名
 (setq read-file-name-completion-ignore-case t) ;; ファイル名
+
+(setq split-width-threshold nil)		;; 縦分割の抑止 ^Xbなどで。
+;; (setq split-height-threshold xx)	;; 横分割の抑止
+
+;; text-modeでauto-fillをOFFにする
+(remove-hook 'text-mode-hook (lambda nil (auto-fill-mode 1)))

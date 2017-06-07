@@ -34,6 +34,12 @@
           (function (lambda ()
                       (set-cursor-color ime-inactivate-cursor-color)))) 
 
+;;; isearchの時にIMEを使えるように。
+(defun w32-isearch-update ()
+  (interactive)
+  (isearch-update))
+(define-key isearch-mode-map [compend] 'w32-isearch-update)
+(define-key isearch-mode-map [kanji] 'isearch-toggle-input-method)
 
 ;; ;;; shell の設定
 

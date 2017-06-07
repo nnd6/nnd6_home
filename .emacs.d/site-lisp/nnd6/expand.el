@@ -289,3 +289,11 @@ When calling from a program, supply a number as argument or nil."
     (find-alternate-file buffer-file-name)))))
 
 (global-set-key [(super c)] 'set-buffer-correct-coding-system)
+
+(defun jmi/set-buffer-local-family (font-family)
+  "Sets font in current buffer"
+  (interactive "sFont Family: ")
+  (defface tmp-buffer-local-face 
+    '((t :family font-family))
+    "Temporary buffer-local face")
+  (buffer-face-set 'tmp-buffer-local-face))

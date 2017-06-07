@@ -1,0 +1,3 @@
+#cd /hirai
+#. .bashrc
+alias ls="ls -CF"
