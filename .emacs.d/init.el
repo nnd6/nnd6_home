@@ -113,3 +113,10 @@
 
 ;; text-modeでauto-fillをOFFにする
 (remove-hook 'text-mode-hook (lambda nil (auto-fill-mode 1)))
+
+;;; VBA mode
+ (autoload 'visual-basic-mode "visual-basic-mode" "Visual Basic mode." t)
+ (setq auto-mode-alist (append '(("\\.\frm\\|bas\\|cls\$" .
+                                 visual-basic-mode)) auto-mode-alist))
+;;;M-x eval-expression
+;;;    (setq require-final-newline nil)

@@ -152,3 +152,26 @@ PATH=$PATH:${GEM_HOME}/bin
 
 ## for emacs warning (X)
 export NO_AT_BRIDGE=1
+
+alias nlp224='ssh nlp224'
+alias jevex='ssh jevex'
+alias redhatdev1='ssh redhatdev1'
+alias vi=vim
+
+export ALTERNATE_EDITOR='/c/GNU/emacs/24.4-ime_pached/bin/runemacs.exe'
+alias ec='HOME=/c/GNU/emacs/home /c/GNU/emacs/24.4-ime_pached/bin/emacsclient.exe'
+alias ecw='HOME=/c/GNU/emacs/home /c/GNU/emacs/24.4-ime_pached/bin/emacsclientw.exe'
+
+CONDAPATH="/C/e/Anaconda3:/C/d/Anaconda3/Scripts:/C/e/Anaconda3/Library/bin"CUDAPATH="/C/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/bin:/C/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/libnvvp"
+GCC32PATH="/C/e/TDM-GCC-32/bin"
+GCC64PATH="/C/e/TDM-GCC-64/bin"
+set_anaconda()
+{
+    PATH=${CONDAPATH}:${PATH}
+}
+PATH=/c/target/bin:/c/tools/bin:$PATH
+set_gcc32()
+{
+    PATH=${GCC32PATH}:${PATH}
+    alias make=mingw32-make.exe
+}
