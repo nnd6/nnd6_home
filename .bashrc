@@ -182,6 +182,15 @@ then
     }
 fi
 
+## for python -- pyenv
+if type pyenv >/dev/null 2>&1
+then
+    export PYENV_ROOT=$HOME/.pyenv
+    export PATH=$PYENV_ROOT/bin:$PATH
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+
 if [ -f ~/nnd6_home/.bash_nnd6 ]
 then
     . ~/nnd6_home/.bash_nnd6
