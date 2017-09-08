@@ -156,9 +156,11 @@ fi
 ## for emacs warning (X)
 export NO_AT_BRIDGE=1
 
+alias animo='ssh animo'
 alias nlp224='ssh nlp224'
 alias jevex='ssh jevex'
 alias redhatdev1='ssh redhatdev1'
+alias redhatdev1smtdev='ssh smtdev@redhatdev1'
 
 if [ "$MSYSTEM" != "" ]
 then
