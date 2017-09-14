@@ -158,9 +158,11 @@ export NO_AT_BRIDGE=1
 
 alias animo='ssh animo'
 alias nlp224='ssh nlp224'
+alias nlp216='ssh hirai@192.168.1.216'
 alias jevex='ssh jevex'
 alias redhatdev1='ssh redhatdev1'
 alias redhatdev1smtdev='ssh smtdev@redhatdev1'
+alias devenv='"C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe"'
 
 if [ "$MSYSTEM" != "" ]
 then
@@ -197,3 +199,6 @@ if [ -f ~/nnd6_home/.bash_nnd6 ]
 then
     . ~/nnd6_home/.bash_nnd6
 fi
+
+unset tmp
+unset temp
