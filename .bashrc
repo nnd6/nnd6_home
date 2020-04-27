@@ -57,9 +57,11 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\W\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -163,7 +165,25 @@ alias jevex='ssh jevex'
 alias redhatdev1='ssh redhatdev1'
 alias redhatdev1smtdev='ssh smtdev@redhatdev1'
 alias devenv='"C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe"'
-
+case "`hostname`" in
+nlp224)
+    alias alignment="cd $HOME/target/alignment/bin"
+    PATH=$HOME/target/alignment/bin:$PATH
+    : ;;
+esac
+set_pyenv()
+{
+    ## for python -- pyenv
+    #    if type pyenv >/dev/null 2>&1
+    if [ -x $HOME/.pyenv/bin/pyenv ]
+    then
+	export PYENV_ROOT=$HOME/.pyenv
+	export PATH=$PYENV_ROOT/bin:$PATH
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+    fi
+}
+##
 if [ "$MSYSTEM" != "" ]
 then
     alias vi=vim
@@ -174,26 +194,28 @@ then
     CONDAPATH="/C/e/Anaconda3:/C/d/Anaconda3/Scripts:/C/e/Anaconda3/Library/bin"CUDAPATH="/C/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/bin:/C/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/libnvvp"
     GCC32PATH="/C/e/TDM-GCC-32/bin"
     GCC64PATH="/C/e/TDM-GCC-64/bin"
+    set_python()
+    {
+	set_anaconda
+	set_pyenv
+    }
     set_anaconda()
     {
 	PATH=${CONDAPATH}:${PATH}
     }
     PATH=/c/target/bin:/c/tools/bin:$PATH
     set_gcc32()
-    {
+ {
 	PATH=${GCC32PATH}:${PATH}
 	alias make=mingw32-make.exe
     }
+else
+    set_python()
+    {
+	set_pyenv
+    }
 fi
 
-## for python -- pyenv
-if type pyenv >/dev/null 2>&1
-then
-    export PYENV_ROOT=$HOME/.pyenv
-    export PATH=$PYENV_ROOT/bin:$PATH
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
 
 if [ -f ~/nnd6_home/.bash_nnd6 ]
 then
@@ -202,3 +224,5 @@ fi
 
 unset tmp
 unset temp
+# For IBM Bluemix
+export KUBECONFIG=/Users/ibm/.bluemix/plugins/container-service/clusters/my_kubernetes_cluster/kube-config-par01-my_kubernetes_cluster.yml
