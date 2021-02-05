@@ -24,7 +24,9 @@
 
 ;;; IME ON/OFF 時にカーソル色を変える。
 (setq ime-activate-cursor-color "#00a000")
-(setq ime-inactivate-cursor-color "#000000")
+;;(setq ime-inactivate-cursor-color "#000000")
+;; ダークテーマに対応 -- 初期値として現在のテーマに合わせて設定
+(setq ime-inactivate-cursor-color (face-attribute 'cursor :background))
 (set-cursor-color ime-inactivate-cursor-color)
 ;; ※input-method-activate-hook, input-method-inactivate-hook じゃない方がいい感じになる。
 (add-hook 'w32-ime-on-hook
