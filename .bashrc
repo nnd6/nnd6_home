@@ -251,10 +251,21 @@ then
 	# for WSL screen-command
 	export SCREENDIR=$HOME/.screen
 fi
-if [ `screen -ls >/dev/null` ]
+
+#####
+# screen is installed
+if which screen > /dev/null
 then
+    setdisplay() {
+	disp=`screen -Q echo '$DISPLAY'`
+	[ ! -z "disp" ] && DISPLAY=$disp
+    }
+    if screen -ls >/dev/null
+    then
 	if [ -v DISPLAY ]
 	then
-		screen -X eval "setenv DISPLAY $DISPLAY"
+	    screen -X eval "setenv DISPLAY $DISPLAY"
 	fi
+    fi
 fi
+#####
