@@ -2,3 +2,13 @@ defutf8 on
 defencoding utf8
 encoding utf8 utf8
 escape ^]]
+
+bind x command -c escape-x-map
+bind -c escape-x-map 2 split
+bind -c escape-x-map 3 split -v
+bind -c escape-x-map o focus
+bind -c escape-x-map 1 only
+bind -c escape-x-map 0 remove
+bind -c escape-x-map } resize +10
+bind -c escape-x-map { resize -10
+bind -c escape-x-map + resize =
