@@ -297,3 +297,7 @@ When calling from a program, supply a number as argument or nil."
     '((t :family font-family))
     "Temporary buffer-local face")
   (buffer-face-set 'tmp-buffer-local-face))
+
+(defun insert-today-string ()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d" (current-time))))

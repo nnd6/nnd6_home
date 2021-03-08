@@ -22,3 +22,5 @@
 			" "	'minibuffer-complete)
 (define-key minibuffer-local-must-match-map
 			"\C-I"	'minibuffer-complete-word)
+
+(define-key global-map (kbd "C-;") 'insert-today-string)   ;;  これでは駄目 ⇒ (define-key global-map "\C-;" 'insert-today-string)
