@@ -258,7 +258,7 @@ if which screen > /dev/null
 then
     setdisplay() {
 	disp=`screen -Q echo '$DISPLAY'`
-	[ ! -z "disp" ] && DISPLAY=$disp
+	[ ! -z "$disp" ] && DISPLAY=$disp
     }
     if screen -ls >/dev/null
     then
