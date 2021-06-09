@@ -246,7 +246,8 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-if  [ -v WSLENV ]
+# if  [ -v WSLENV ]
+if [ "${WSLENV+foo}" ]
 then
 	# for WSL screen-command
 	export SCREENDIR=$HOME/.screen
