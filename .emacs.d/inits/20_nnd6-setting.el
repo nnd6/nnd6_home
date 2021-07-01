@@ -1,6 +1,6 @@
 (global-set-key "\C-h" 'delete-backward-char)
-(setq display-time-day-and-date t)
-(setq display-time-24hr-format t)
+#(setq display-time-day-and-date t)
+#(setq display-time-24hr-format t)
 (display-time)
 ;; 駄目 表示更新時に 日本語に戻ってしまう orz      (let* ((system-time-locale "English")) (display-time))
 ;;(shell)
